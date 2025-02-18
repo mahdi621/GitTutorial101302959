@@ -15,9 +15,7 @@ class RGB {
         void setR(int red);
         void setB(int blue);
         void setG(int green);
-        //CuColour getColour() const;
 
-        //void setColour(CuColour colour);
         void print() const;
 
         static RGB WHITE();

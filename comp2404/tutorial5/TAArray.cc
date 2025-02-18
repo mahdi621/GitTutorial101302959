@@ -12,9 +12,17 @@ TAArray::TAArray()
     array = new TextArea*[capacity];
 }
 
+// TAArray::~TAArray() {
+//     delete[] array;
+// }
+
 TAArray::~TAArray() {
-    delete[] array;
+    for (int i = 0; i < size; ++i) {
+        delete array[i];  // ✅ Delete each dynamically allocated TextArea
+    }
+    delete[] array;  // ✅ Then delete the array itself
 }
+
 
 bool TAArray::add(TextArea* ta) {
     if (size < capacity) {
@@ -58,6 +66,7 @@ TextArea* TAArray::remove(int index) {
         return nullptr;
     }
     TextArea* removed = array[index];
+    delete array[index];
 
     for (int i = index; i < size - 1; ++i) {
         array[i] = array[i + 1];
@@ -68,10 +77,11 @@ TextArea* TAArray::remove(int index) {
     return removed; 
 }
 
-TextArea* TAArray::remove(const std::string& id) {
+TextArea* TAArray::remove(const string& id) {
     for (int i = 0; i < size; ++i) {
         if (array[i] && array[i]->getID() == id) {
             TextArea* removed = array[i];
+            delete array[i];
             
             for (int j = i; j < size - 1; ++j) {
                 array[j] = array[j + 1];
@@ -84,18 +94,18 @@ TextArea* TAArray::remove(const std::string& id) {
     return nullptr;
 }
 
-int TAArray::getCapacity() const {
-    return capacity;
-}
+// int TAArray::getCapacity() const {
+//     return capacity;
+// }
 
 int TAArray::getSize() const {
     return size;
 }
 
-void TAArray::print() const {
-    for (int i = 0; i < size; ++i) {
-        if (array[i]) {
-            array[i]->print();
-        }
-    }
-}
+// void TAArray::print() const {
+//     for (int i = 0; i < size; ++i) {
+//         if (array[i]) {
+//             array[i]->print();
+//         }
+//     }
+// }
