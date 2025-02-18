@@ -22,9 +22,8 @@ class TAArray{
     TextArea* remove(const string& id);
 
     int getSize() const;
-    //int getCapacity() const;
 
-    //void print() const;
+    void print() const;
 
     private:
     TextArea** array;

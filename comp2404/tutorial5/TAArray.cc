@@ -12,15 +12,11 @@ TAArray::TAArray()
     array = new TextArea*[capacity];
 }
 
-// TAArray::~TAArray() {
-//     delete[] array;
-// }
-
 TAArray::~TAArray() {
     for (int i = 0; i < size; ++i) {
-        delete array[i];  // ✅ Delete each dynamically allocated TextArea
+        delete array[i]; 
     }
-    delete[] array;  // ✅ Then delete the array itself
+    delete[] array; 
 }
 
 
@@ -94,18 +90,14 @@ TextArea* TAArray::remove(const string& id) {
     return nullptr;
 }
 
-// int TAArray::getCapacity() const {
-//     return capacity;
-// }
-
 int TAArray::getSize() const {
     return size;
 }
 
-// void TAArray::print() const {
-//     for (int i = 0; i < size; ++i) {
-//         if (array[i]) {
-//             array[i]->print();
-//         }
-//     }
-// }
+void TAArray::print() const {
+    for (int i = 0; i < size; ++i) {
+        if (array[i]) {
+            array[i]->print();
+        }
+    }
+}

@@ -32,7 +32,6 @@ void TextArea::draw(Display *display, Window win, GC gc, int x, int y) const {
 
 bool TextArea::overlaps(const TextArea& ta) const {
     return dimensions.overlaps(ta.dimensions);
-    //if(x + width <= ta.x || ta.x + ta.width <= x) || (y + height <= ta.y || ta.y + ta.height <= y)); 
 }
 
 string TextArea::getID() const {
